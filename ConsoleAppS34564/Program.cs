@@ -49,7 +49,7 @@ namespace ConsoleAppS34564
             Console.WriteLine($"Suma: {sum}");
             Console.WriteLine($"Średnia: {average}");
             Console.WriteLine($"Minimum: {min}");
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("Statistics calculated successfully.");
         }
     }
 }
