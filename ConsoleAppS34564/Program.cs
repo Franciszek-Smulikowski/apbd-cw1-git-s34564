@@ -40,6 +40,9 @@ namespace ConsoleAppS34564
             Console.WriteLine("Wczytane liczby: " + string.Join(", ", numbers));
             int sum = StatisticsHelper.CalculateSum(numbers);
             Console.WriteLine("Suma: " + sum);
+
+            double average = StatisticsHelper.CalculateAverage(numbers);
+            Console.WriteLine("Średnia: " + average);
         }
     }
 }
