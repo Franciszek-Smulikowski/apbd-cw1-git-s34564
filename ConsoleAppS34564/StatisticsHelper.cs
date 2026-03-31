@@ -18,5 +18,16 @@ namespace ConsoleAppS34564
             }
             return sum;
         }
+
+        public static double CalculateAverage(int[] values)
+        {
+            if (values == null || values.Length == 0)
+            {
+                throw new ArgumentException("Tablica nie może być pusta ani null.");
+            }
+
+            int sum = CalculateSum(values);
+            return (double)sum / values.Length;
+        }
     }
 }
