@@ -10,6 +10,9 @@ namespace ConsoleAppS34564
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("=================================");
+            Console.WriteLine("    KALKULATOR STATYSTYCZNY      ");
+            Console.WriteLine("=================================");
             Console.WriteLine("Podaj liczby całkowite oddzielone spacją lub przecinkiem:");
             string input = Console.ReadLine();
 
