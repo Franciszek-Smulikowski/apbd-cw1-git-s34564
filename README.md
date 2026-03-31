@@ -1,26 +1,24 @@
-# Console Statistics App
+# Ćwiczenie 1 - APBD (Git i GitHub)
 
-Prosta aplikacja konsolowa napisana w C# do obliczania statystyk ze zbioru liczb całkowitych (suma, średnia, itp.). 
+Niniejszy projekt to prosta aplikacja konsolowa w języku C#, stworzona na potrzeby realizacji ćwiczenia z obsługi systemu kontroli wersji Git. Program przyjmuje od użytkownika zbiór liczb i oblicza na ich podstawie podstawowe wartości statystyczne (sumę, średnią, minimum oraz docelowo maksimum).
 
-Projekt ten służy głównie do ćwiczeń z podstaw systemów kontroli wersji Git oraz platformy GitHub.
-
-## Jak uruchomić
-
-Aby skompilować i uruchomić projekt, otwórz terminal w katalogu z aplikacją i użyj poniższych komend:
-
+## Uruchomienie
+Aby skompilować i uruchomić projekt, należy otworzyć terminal w katalogu głównym projektu i wykonać następujące polecenia:
 ```bash
 dotnet build
 dotnet run
 ```
 
-## Notatki z ćwiczenia Git
+## Odpowiedzi na pytania z ćwiczenia
 
-**Dlaczego merge gałęzi `feature-max` do `main` nie był fast-forward?**
-Merge nie mógł zostać wykonany w trybie fast-forward, ponieważ po utworzeniu gałęzi `feature-max`, na gałęzi `main` pojawił się niezależny commit (historia commitów się rozeszła). Z tego powodu Git musiał połączyć te dwie ścieżki zmian, tworząc domyślnie nowy commit scalający (merge commit).
+**1. Kiedy Git wykonuje fast-forward, a kiedy powstaje merge commit?**
+Scalanie typu *fast-forward* zachodzi, gdy od momentu utworzenia nowej gałęzi (brancha) gałąź docelowa (np. `main`) nie uległa zmianie. Git przesuwa w tej sytuacji wskaźnik do przodu. 
+Z kolei *merge commit* powstaje w sytuacji, gdy w czasie prowadzenia prac na nowej gałęzi obok dokonano osobnych modyfikacji również na gałęzi głównej. W repozytorium miało to miejsce przy scalaniu gałęzi `feature-max`, gdzie konieczne było wygenerowanie dodatkowego commita łączącego obie rozwidlone ścieżki.
 
-**Merge a Rebase w praktyce**
-* **Merge:** Zachowuje oryginalną, rozgałęzioną historię w dokładnie takiej formie, w jakiej powstawała (tworząc często oddzielne merge commity). Użyliśmy tego przy gałęzi `feature-max`.
-* **Rebase:** Przepisuje historię commitów danego brancha na nową bazę (np. na aktualny szczyt gałęzi `main`). Skutkuje to bardziej uporządkowaną i liniową historią bez dodatkowych commitów scalających. Przećwiczyliśmy to na branchu `feature-min`.
+**2. Czym w praktyce różni się merge od rebase?**
+Obydwie metody służą do integracji zmian, jednak różnią się sposobem ich rejestracji w historii:
+* **Merge** (zastosowane przy gałęzi `feature-max`) łączy dwie gałęzie zachowując ich drzewiastą strukturę i moment rozwidlenia w historii commitów. Zazwyczaj wymaga też stworzenia dodatkowego *merge commita*.
+* **Rebase** (zastosowane przy gałęzi `feature-min`) przenosi wybrane commity z gałęzi roboczej i aplikuje je jako nowe na samym szczycie najnowszej wersji gałęzi `main`. Dzięki temu historia wygląda na w pełni liniową, co znacznie zwiększa jej czytelność podczas audytu.
 
-**Rozwiązanie konfliktu**
-Konflikt przy scalaniu wystąpił, ponieważ ta sama linia kodu (komunikat końcowy w `Program.cs`) została jednocześnie zmieniona na gałęzi `main` oraz `feature-conflict`. Został on rozwiązany ręcznie poprzez edycję pliku, usunięcie znaczników konfliktu i pozostawienie docelowej (połączonej) wersji komunikatu.
+**3. W jaki sposób rozwiązano konflikt w repozytorium?**
+Konflikt wywołano celowo w ramach gałęzi `feature-conflict` poprzez zmodyfikowanie w niej tego samego wiersza (końcowego komunikatu w powiadomieniu konsolowym pliku `Program.cs`), który wcześniej zmodyfikowano również na gałęzi `main`. Ponieważ Git nie dysponował jednoznaczną odpowiedzią na to, która wersja jest poprawna, zatrzymał proces scalania i poprosił o interwencję. Rozwiązanie konfliktu polegało na ręcznej edycji pliku poprzez wykasowanie znaczników Gita (np. `<<<<<<<` i `>>>>>>>`) oraz pozostawieniu spójnej, ostatecznej treści komunikatu z nowym commitem zamykającym proces *merge*.
