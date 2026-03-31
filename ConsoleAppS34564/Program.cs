@@ -10,9 +10,17 @@ namespace ConsoleAppS34564
     {
         static void Main(string[] args)
         {
-            int[] numbers = { 1, 2, 3, 4, 5 };
-            Console.WriteLine("Liczby: " + string.Join(", ", numbers));
+            Console.WriteLine("Podaj liczby całkowite oddzielone spacją lub przecinkiem:");
+            string input = Console.ReadLine();
 
+            string[] parts = input.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            int[] numbers = new int[parts.Length];
+            for (int i = 0; i < parts.Length; i++)
+            {
+                numbers[i] = int.Parse(parts[i]);
+            }
+
+            Console.WriteLine("Wczytane liczby: " + string.Join(", ", numbers));
             int sum = StatisticsHelper.CalculateSum(numbers);
             Console.WriteLine("Suma: " + sum);
         }
