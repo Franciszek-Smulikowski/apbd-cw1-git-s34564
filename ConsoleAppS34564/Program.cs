@@ -49,7 +49,8 @@ namespace ConsoleAppS34564
             Console.WriteLine($"Suma: {sum}");
             Console.WriteLine($"Średnia: {average}");
             Console.WriteLine($"Minimum: {min}");
-            Console.WriteLine("Finished calculating statistics.");
+
+            Console.WriteLine("Finished calculating statistics successfully.");
         }
     }
 }
