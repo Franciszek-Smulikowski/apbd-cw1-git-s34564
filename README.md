@@ -21,3 +21,6 @@ Merge nie mógł zostać wykonany w trybie fast-forward, ponieważ po utworzeniu
 **Merge a Rebase w praktyce**
 * **Merge:** Zachowuje oryginalną, rozgałęzioną historię w dokładnie takiej formie, w jakiej powstawała (tworząc często oddzielne merge commity). Użyliśmy tego przy gałęzi `feature-max`.
 * **Rebase:** Przepisuje historię commitów danego brancha na nową bazę (np. na aktualny szczyt gałęzi `main`). Skutkuje to bardziej uporządkowaną i liniową historią bez dodatkowych commitów scalających. Przećwiczyliśmy to na branchu `feature-min`.
+
+**Rozwiązanie konfliktu**
+Konflikt przy scalaniu wystąpił, ponieważ ta sama linia kodu (komunikat końcowy w `Program.cs`) została jednocześnie zmieniona na gałęzi `main` oraz `feature-conflict`. Został on rozwiązany ręcznie poprzez edycję pliku, usunięcie znaczników konfliktu i pozostawienie docelowej (połączonej) wersji komunikatu.
