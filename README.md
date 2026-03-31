@@ -17,3 +17,7 @@ dotnet run
 
 **Dlaczego merge gałęzi `feature-max` do `main` nie był fast-forward?**
 Merge nie mógł zostać wykonany w trybie fast-forward, ponieważ po utworzeniu gałęzi `feature-max`, na gałęzi `main` pojawił się niezależny commit (historia commitów się rozeszła). Z tego powodu Git musiał połączyć te dwie ścieżki zmian, tworząc domyślnie nowy commit scalający (merge commit).
+
+**Merge a Rebase w praktyce**
+* **Merge:** Zachowuje oryginalną, rozgałęzioną historię w dokładnie takiej formie, w jakiej powstawała (tworząc często oddzielne merge commity). Użyliśmy tego przy gałęzi `feature-max`.
+* **Rebase:** Przepisuje historię commitów danego brancha na nową bazę (np. na aktualny szczyt gałęzi `main`). Skutkuje to bardziej uporządkowaną i liniową historią bez dodatkowych commitów scalających. Przećwiczyliśmy to na branchu `feature-min`.
