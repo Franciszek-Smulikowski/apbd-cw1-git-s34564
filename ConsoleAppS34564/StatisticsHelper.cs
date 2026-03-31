@@ -47,5 +47,23 @@ namespace ConsoleAppS34564
             }
             return max;
         }
+
+        public static int CalculateMin(int[] values)
+        {
+            if (values == null || values.Length == 0)
+            {
+                throw new ArgumentException("Tablica nie może być pusta ani null.");
+            }
+
+            int min = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] < min)
+                {
+                    min = values[i];
+                }
+            }
+            return min;
+        }
     }
 }
