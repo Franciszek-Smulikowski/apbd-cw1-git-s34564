@@ -13,11 +13,28 @@ namespace ConsoleAppS34564
             Console.WriteLine("Podaj liczby całkowite oddzielone spacją lub przecinkiem:");
             string input = Console.ReadLine();
 
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Błąd: Wejście nie może być puste.");
+                return;
+            }
+
             string[] parts = input.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            if (parts.Length == 0)
+            {
+                Console.WriteLine("Błąd: Nie podano żadnych liczb.");
+                return;
+            }
+
             int[] numbers = new int[parts.Length];
             for (int i = 0; i < parts.Length; i++)
             {
-                numbers[i] = int.Parse(parts[i]);
+                if (!int.TryParse(parts[i], out numbers[i]))
+                {
+                    Console.WriteLine($"Błąd: Wartość '{parts[i]}' nie jest poprawną liczbą całkowitą.");
+                    return;
+                }
             }
 
             Console.WriteLine("Wczytane liczby: " + string.Join(", ", numbers));
