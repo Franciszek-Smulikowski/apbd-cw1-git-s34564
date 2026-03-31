@@ -10,6 +10,11 @@ namespace ConsoleAppS34564
     {
         static void Main(string[] args)
         {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            Console.WriteLine("Liczby: " + string.Join(", ", numbers));
+
+            int sum = StatisticsHelper.CalculateSum(numbers);
+            Console.WriteLine("Suma: " + sum);
         }
     }
 }
