@@ -46,6 +46,9 @@ namespace ConsoleAppS34564
 
             double average = StatisticsHelper.CalculateAverage(numbers);
             Console.WriteLine("Średnia: " + average);
+
+            int min = StatisticsHelper.CalculateMin(numbers);
+            Console.WriteLine("Minimum: " + min);
         }
     }
 }
